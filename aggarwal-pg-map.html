@@ -1,1 +1,71 @@
 
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Aggarwal PG - Map Location</title>
+    <style>
+      #map {
+        height: 100vh;
+        width: 100%;
+      }
+      body {
+        margin: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      }
+      h2 {
+        text-align: center;
+        padding: 12px;
+        background-color: #004d99;
+        color: white;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Aggarwal PG for Boys & Girls - Greater Noida</h2>
+    <div id="map"></div>
+
+    <script>
+      function initMap() {
+        // Coordinates for Aggarwal PG
+        const pgLocation = { lat: 28.5961, lng: 77.4820 };
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 15,
+          center: pgLocation,
+        });
+
+        const marker = new google.maps.Marker({
+          position: pgLocation,
+          map: map,
+          title: "Aggarwal PG for Boys and Girls",
+        });
+
+        const infoWindow = new google.maps.InfoWindow({
+          content: `
+            <div style="max-width:280px; font-size:14px;">
+              <strong>🏡 Aggarwal PG for Boys and Girls</strong><br><br>
+              📍 Near Galgotia University, Sector-17A, Greater Noida, UP – 203201<br><br>
+              ✅ Spacious rooms with attached bathrooms<br>
+              ✅ Wi-Fi, meals, laundry, CCTV, and more<br><br>
+              📞 Contact: <br>
+              9555556200<br>
+              9911336200<br>
+              9911337600<br><br>
+              <a href="#" target="_blank" style="color:blue;">Book Now</a>
+            </div>
+          `,
+        });
+
+        marker.addListener("click", () => {
+          infoWindow.open(map, marker);
+        });
+      }
+    </script>
+
+    <!-- Replace 'YOUR_API_KEY' with your actual Google Maps API key -->
+    <script async
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
+    </script>
+  </body>
+</html>
